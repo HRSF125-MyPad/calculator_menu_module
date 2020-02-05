@@ -31,7 +31,7 @@ class CalculatorMain extends React.Component {
     On page load, get a random house to populate the calculator with. See server API for what is returned.
   */
   componentDidMount() {
-    var id = Math.floor(Math.random() * 50);
+    var id = 1 + Math.floor(Math.random() * 49);
     axios.get(`/homes`, {
       params: {
         id : id
