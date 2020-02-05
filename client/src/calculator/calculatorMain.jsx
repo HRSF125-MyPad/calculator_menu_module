@@ -27,12 +27,16 @@ class CalculatorMain extends React.Component {
 
     }
   }
-
   /*
     On page load, get a random house to populate the calculator with. See server API for what is returned.
   */
   componentDidMount() {
-    axios.get(`/homes`)
+    var id = Math.floor(Math.random() * 50);
+    axios.get(`/homes`, {
+      params: {
+        id : id
+      }
+    })
     .then(({ data }) => {
       var rawPricingObj, pricingObj = {};
       rawPricingObj = {

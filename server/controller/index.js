@@ -7,7 +7,7 @@ var models = require('../models');
 module.exports = {
   homes : {
     get : (req, res) => { 
-      models.homes.get((err, data) => {
+      models.homes.get(req.query.id, (err, data) => {
         if (err) {
           res.send(200);
         } else {
