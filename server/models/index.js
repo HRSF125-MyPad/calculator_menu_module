@@ -10,9 +10,9 @@ module.exports = {
       This function retrieves 1 random house with the associated property tax, insurance, etc. 
       Sends back the result as a single object with all necessary properties to parse on client side. 
     */
-    get : (callback) => {
+    get : (homeId, callback) => {
       var concatResults = {}; 
-      return db.query('SELECT * from homes ORDER BY RAND() LIMIT 1')
+      return db.query(`SELECT * from homes WHERE id=${homeId}`)
        .then(results => {
         _.extend(concatResults, results[0]);
         return db.query(`SELECT statePropTax from taxes WHERE stateId = ${concatResults.stateId}`);
